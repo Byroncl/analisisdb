@@ -479,3 +479,39 @@ INSERT INTO VELATORIO (ID_VELATORIO, DIMENSIONES_VELATORIO, DIRECCION_VELATORIO,
 (3, '20x20', 'Calle 3', 100, '12:00:00'),
 (4, '25x25', 'Calle 4', 125, '13:00:00'),
 (5, '30x30', 'Calle 5', 150, '14:00:00');
+
+
+/*consultas*/
+/*==============================================================*/
+
+/*El tiempo promedio transcurrido entre la defunción y el embalsamamiento de difuntos.*/
+/*AVG funcion para sacar promedios*/
+SELECT 
+  AVG (fallecido.HORADIFUNCION_FALLECIDO) as Hora_Difucion, 
+  AVG (fallecido.HORAEMBALSAMIENTO_FALLECIDO) as Hora_Embalsamiento
+  FROM 
+  public.fallecido;
+/*==============================================================*/
+/*==============================================================*/
+/*Cantidad de veces por cada sala de velación en donde se alquile el espacio y no se venda el ataúd.*/
+SELECT 
+  reserva_detalle.id_velatorio,
+  COUNT(servicio.VENTAATAUD_VELATORIO) AS cantidad_de_veces
+FROM 
+  public.reserva_detalle 
+  INNER JOIN public.servicio ON reserva_detalle.id_reserva = servicio.id_reserva
+GROUP BY 
+  reserva_detalle.id_velatorio
+LIMIT 10;
+
+/*==============================================================*/
+/*==============================================================*/
+/*Suma total de cada causa de defunción.*/
+SELECT 
+  count(causa_muerte.CANCER) AS CANCER, 
+  count(causa_muerte.PULOMNIA) AS PULMONIA, 
+  count(causa_muerte.DERRAME) AS DERRAME, 
+  count(causa_muerte.PARO_CARDIACO) AS PAROCARDIACO
+FROM 
+  public.fallecido
+  INNER JOIN public.causa_muerte ON fallecido.ID_FALLECIDO = causa_muerte.ID_FALLECIDO;
