@@ -402,6 +402,80 @@ alter table TIPO_EMPLEADO
 
 
 /*INSERCIÓN DE DATOS*/
-/*cliente*/
-insert into cliente values(1, 'byron', 'calderón', '1234567891', '1234567891');
-select * from cliente;
+INSERT INTO CAUSA_MUERTE (ID_CAUSA_MUERTE, ID_FALLECIDO, CANCER, PULOMNIA, DERRAME, PARO_CARDIACO, OTRO) VALUES
+(1, 1, 'D', 'N', 'D', 'B', 'Enfermedad crónica'),
+(2, 2, 'N', 'N', 'D', 'D', 'Accidente de tráfico'),
+(3, 3, 'D', 'B', 'N', 'D', 'Causa desconocida'),
+(4, 4, 'B', 'D', 'N', 'N', 'Complicaciones quirúrgicas'),
+(5, 5, 'N', 'D', 'D', 'N', 'Infarto agudo');
+
+
+INSERT INTO CLIENTE (ID_CLIENTE, NOMBRE_CLIENTE, APELLIDO_CLIENTE, NUMERO_CELULAR_CLIENTE, CEDULA_CLIENTE) VALUES
+(1, 'Byron', 'Calderón', '1234567891', '1234567891'),
+(2, 'Juan', 'Pérez', '1234567892', '1234567892'),
+(3, 'Ana', 'Gómez', '1234567893', '1234567893'),
+(4, 'María', 'López', '1234567894', '1234567894'),
+(5, 'Pedro', 'Ramírez', '1234567895', '1234567895');
+
+
+INSERT INTO EMPLEADO (ID_EMPLEADO, ID_PROFESIONAL, NOMBRE_EMPLEADO, APELLIDO_EMPLEADO, DIRECCION_EMPLEADO, FNACIMIENTO_EMPLEADO, FINGRESO_LABORAL_EMPLEADO, NUMERO_TELEFONO_EMPLEADO) VALUES
+(1, 1, 'Carlos', 'Martínez', 'Calle 1', '1980-01-01', '2020-01-01', '0987654321'),
+(2, 2, 'Luis', 'Rodríguez', 'Calle 2', '1985-02-02', '2021-02-02', '0987654322'),
+(3, 3, 'Elena', 'García', 'Calle 3', '1990-03-03', '2022-03-03', '0987654323'),
+(4, 4, 'Miguel', 'Hernández', 'Calle 4', '1995-04-04', '2023-04-04', '0987654324'),
+(5, 5, 'Laura', 'Sánchez', 'Calle 5', '2000-05-05', '2024-05-05', '0987654325');
+
+
+INSERT INTO FACTURA (ID_FACTURA, ID_RESERVA, FECHA_FACTURA) VALUES
+(1, 1, '2024-07-01'),
+(2, 2, '2024-07-02'),
+(3, 3, '2024-07-03'),
+(4, 4, '2024-07-04'),
+(5, 5, '2024-07-05');
+
+INSERT INTO FALLECIDO (ID_FALLECIDO, ID_RESERVA, NOMBRE_FALLECIDO, APELLIDO_FALLECIDO, SEXO_FALLECIDO, FECHANACIMIENTO_FALLECIDO, DIFUNCION_FALLECIDO, HORADIFUNCION_FALLECIDO, HORAEMBALSAMIENTO_FALLECIDO) VALUES
+(1, 1, 'José', 'Díaz', 'M', '1950-01-01', '2024-06-01', '10:00:00', '12:00:00'),
+(2, 2, 'María', 'Ruiz', 'F', '1960-02-02', '2024-06-02', '11:00:00', '13:00:00'),
+(3, 3, 'Pedro', 'Hernández', 'M', '1970-03-03', '2024-06-03', '12:00:00', '14:00:00'),
+(4, 4, 'Ana', 'Santos', 'F', '1980-04-04', '2024-06-04', '13:00:00', '15:00:00'),
+(5, 5, 'Laura', 'Morales', 'F', '1990-05-05', '2024-06-05', '14:00:00', '16:00:00');
+
+
+INSERT INTO PROFESIONAL_REGISTRADO (ID_PROFESIONAL, ID_EMPLEADO, EMBALSAMIENTO_PROFESIONAL, MAQUILLAJE_PROFESIONAL) VALUES
+(1, 1, 'D', 'N'),
+(2, 2, 'N', 'D'),
+(3, 3, 'D', 'D'),
+(4, 4, 'N', 'B'),
+(5, 5, 'B', 'N');
+
+
+INSERT INTO RESERVA_DETALLE (ID_RESERVA, ID_EMPLEADO, ID_CLIENTE, ID_FALLECIDO, ID_VELATORIO, OBSERVACION_RESERVA, FECHA_RESERVA, HORA_RESERVA) VALUES
+(1, 1, 1, 1, 1, 'Observación 1', '2024-07-01', '10:00:00'),
+(2, 2, 2, 2, 2, 'Observación 2', '2024-07-02', '11:00:00'),
+(3, 3, 3, 3, 3, 'Observación 3', '2024-07-03', '12:00:00'),
+(4, 4, 4, 4, 4, 'Observación 4', '2024-07-04', '13:00:00'),
+(5, 5, 5, 5, 5, 'Observación 5', '2024-07-05', '14:00:00');
+
+
+INSERT INTO SERVICIO (ID_SERVICIO, ID_RESERVA, ACOMPANANTEMUSICAL_VELATORIO, COMIDA_VELATORIO, TRANSPORTECEMENTERIO_VELATORIO, VENTAATAUD_VELATORIO, MAQUINACAFE_VELATORIO, COSTO) VALUES
+(1, 1, 'D', 'N', 'D', 'B', 'D', 100.50),
+(2, 2, 'N', 'D', 'N', 'D', 'N', 200.75),
+(3, 3, 'D', 'D', 'B', 'N', 'B', 300.00),
+(4, 4, 'N', 'B', 'D', 'N', 'D', 150.25),
+(5, 5, 'B', 'N', 'N', 'D', 'N', 250.60);
+
+
+INSERT INTO TIPO_EMPLEADO (ID_TIPOEMPLEADO, ID_EMPLEADO, DESCRIPCION_TIPOEMPLEADO) VALUES
+(1, 1, 'Administrador'),
+(2, 2, 'Embalsamador'),
+(3, 3, 'Maquillador'),
+(4, 4, 'Asistente'),
+(5, 5, 'Chofer');
+
+
+INSERT INTO VELATORIO (ID_VELATORIO, DIMENSIONES_VELATORIO, DIRECCION_VELATORIO, CAPACIDAD_VELATORIO, HORARESERVA_VELATORIO) VALUES
+(1, '10x10', 'Calle 1', 50, '10:00:00'),
+(2, '15x15', 'Calle 2', 75, '11:00:00'),
+(3, '20x20', 'Calle 3', 100, '12:00:00'),
+(4, '25x25', 'Calle 4', 125, '13:00:00'),
+(5, '30x30', 'Calle 5', 150, '14:00:00');
